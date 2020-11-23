@@ -81,6 +81,9 @@ IF NOT EXIST boost_1_72_0 (
   )
   DEL /F /Q boost_1_72_0.zip
 )
+IF NOT EXIST cache_files (
+  MD cache_files
+)
 ECHO timestamp > cache_files\tic_tac_toe.txt
 ENDLOCAL
 EXIT /B !EXIT_STATUS!

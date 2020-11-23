@@ -1,5 +1,9 @@
 set(TIC_TAC_TOE_INCLUDE_PATH "${CMAKE_CURRENT_LIST_DIR}/../Include")
 set(TIC_TAC_TOE_SOURCE_PATH "${CMAKE_CURRENT_LIST_DIR}/../Source/Library")
+set(BOOST_INCLUDE_PATH
+  "${PROJECT_BINARY_DIR}/Dependencies/boost_1_72_0/include/boost-1_72")
+set(BOOST_DEBUG_PATH "${PROJECT_BINARY_DIR}/Dependencies/boost_1_72_0/lib")
+set(BOOST_OPTIMIZED_PATH "${PROJECT_BINARY_DIR}/Dependencies/boost_1_72_0/lib")
 set(QT_ROOT "${PROJECT_BINARY_DIR}/Dependencies/qt-5.14.0")
 set(QT_INCLUDE_PATH "${QT_ROOT}/qtbase/include")
 set(QT_CORE_INCLUDE_PATH "${QT_INCLUDE_PATH}/QtCore")
