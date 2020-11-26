@@ -2,6 +2,7 @@
 #define TIC_TAC_TOE_BOARD_HPP
 #include <cstdint>
 #include <stdexcept>
+#include <vector>
 
 namespace TicTacToe {
 
@@ -47,6 +48,12 @@ namespace TicTacToe {
        *         board's range.
        */
       void set_piece(int x, int y, Token token);
+
+    private:
+
+      /** Array of the board. */
+      std::vector<std::vector<Token>> board_ = std::vector<std::vector<Token>>(
+        ROW_COUNT, std::vector<Token>(COLUMN_COUNT, Token::NONE));
   };
 
   /**
