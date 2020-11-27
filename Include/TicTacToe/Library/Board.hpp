@@ -49,6 +49,12 @@ namespace TicTacToe {
        */
       void set_piece(int x, int y, Token token);
 
+      /** Tests a Board for coordinate-wise equality. */
+      bool operator ==(const Board& board) const;
+
+      /** Tests a Board for coordinate-wise inequality. */
+      bool operator !=(const Board& board) const;
+
     private:
 
       /** Array of the board. */

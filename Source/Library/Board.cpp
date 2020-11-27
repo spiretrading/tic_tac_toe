@@ -18,6 +18,13 @@ void Board::set_piece(int x, int y, Token token) {
   m_board[x][y] = token;
 }
 
+bool Board::operator ==(const Board& board) const {
+  return true;
+}
+
+bool Board::operator !=(const Board& board) const {
+  return true;
+}
 
 Board::Token TicTacToe::evaluate_winner(const Board& board) {
   /** Count of each row */
