@@ -1,5 +1,6 @@
 #ifndef TIC_TAC_TOE_BOARD_HPP
 #define TIC_TAC_TOE_BOARD_HPP
+#include <array>
 #include <cstdint>
 #include <stdexcept>
 
@@ -53,6 +54,11 @@ namespace TicTacToe {
 
       /** Tests a Board for coordinate-wise inequality. */
       bool operator !=(const Board& board) const;
+
+    private:
+
+      /** Array of the board. */
+      std::array<std::array<Token, COLUMN_COUNT>, ROW_COUNT> m_board;
   };
 
   /**
