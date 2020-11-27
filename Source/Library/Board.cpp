@@ -19,11 +19,25 @@ void Board::set_piece(int x, int y, Token token) {
 }
 
 bool Board::operator ==(const Board& board) const {
+  for(auto x = 0; x < ROW_COUNT; ++x) {
+    for(auto y = 0; y < COLUMN_COUNT; ++y) {
+      if(m_board[x][y] != board.get_piece(x, y)) {
+        return false;
+      }
+    }
+  }
   return true;
 }
 
 bool Board::operator !=(const Board& board) const {
-  return true;
+  for(auto x = 0; x < ROW_COUNT; ++x) {
+    for(auto y = 0; y < COLUMN_COUNT; ++y) {
+      if(m_board[x][y] != board.get_piece(x, y)) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 Board::Token TicTacToe::evaluate_winner(const Board& board) {
