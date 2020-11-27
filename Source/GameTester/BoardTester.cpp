@@ -134,4 +134,19 @@ TEST_SUITE("Board") {
       CHECK(evaluate_winner(board) == Board::Token::O);
     }
   }
+
+  TEST_CASE("equality_operators") {
+      auto board1 = Board();
+      auto board2 = Board();
+      CHECK(board1 == board2);
+      for(auto x = 0; x < Board::ROW_COUNT; ++x) {
+        board1.set_piece(x, 0, Board::Token::X);
+        board1.set_piece(x, 1, Board::Token::O);
+        board2.set_piece(x, 0, Board::Token::X);
+        board2.set_piece(x, 1, Board::Token::O);
+      }
+      CHECK(board1 == board2);
+      board2.set_piece(0, 2, Board::Token::X);
+      CHECK(board1 != board2);
+  }
 }

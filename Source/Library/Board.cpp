@@ -19,11 +19,11 @@ void Board::set_piece(int x, int y, Token token) {
 }
 
 bool Board::operator ==(const Board& board) const {
-  return true;
+  return m_board == board.m_board;
 }
 
 bool Board::operator !=(const Board& board) const {
-  return true;
+  return !(*this == board);
 }
 
 Board::Token TicTacToe::evaluate_winner(const Board& board) {
