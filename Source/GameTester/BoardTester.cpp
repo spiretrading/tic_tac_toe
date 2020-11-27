@@ -21,7 +21,6 @@ TEST_SUITE("Board") {
     CHECK_THROWS(board.set_piece(0, Board::COLUMN_COUNT, Board::Token::X));
     CHECK_THROWS(board.set_piece(-1, -1, Board::Token::X));
     CHECK_THROWS(board.set_piece(Board::ROW_COUNT, Board::COLUMN_COUNT, Board::Token::X));
-
     CHECK_THROWS(board.get_piece(-1, 0));
     CHECK_THROWS(board.get_piece(Board::ROW_COUNT, 0));
     CHECK_THROWS(board.get_piece(0, -1));

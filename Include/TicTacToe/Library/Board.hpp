@@ -1,8 +1,8 @@
 #ifndef TIC_TAC_TOE_BOARD_HPP
 #define TIC_TAC_TOE_BOARD_HPP
+#include <array>
 #include <cstdint>
 #include <stdexcept>
-#include <vector>
 
 namespace TicTacToe {
 
@@ -52,8 +52,7 @@ namespace TicTacToe {
     private:
 
       /** Array of the board. */
-      std::vector<std::vector<Token>> board_ = std::vector<std::vector<Token>>(
-        ROW_COUNT, std::vector<Token>(COLUMN_COUNT, Token::NONE));
+      std::array<std::array<Token, COLUMN_COUNT>, ROW_COUNT> board_{{}};
   };
 
   /**
