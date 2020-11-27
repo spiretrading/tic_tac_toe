@@ -7,7 +7,7 @@ Board::Token Board::get_piece(int x, int y) const {
     throw std::out_of_range(
       "The x or y coordinate is outside of the board's range.");
   }
-  return board_[x][y];
+  return m_board[x][y];
 }
 
 void Board::set_piece(int x, int y, Token token) {
@@ -15,7 +15,7 @@ void Board::set_piece(int x, int y, Token token) {
     throw std::out_of_range(
       "The x or y coordinate is outside of the board's range.");
   }
-  board_[x][y] = token;
+  m_board[x][y] = token;
 }
 
 
@@ -46,8 +46,20 @@ Board::Token TicTacToe::evaluate_winner(const Board& board) {
       }();
       rows[x] += point;
       columns[y] += point;
-      diagonal += (x == y ? point : 0);
-      reverse_diagonal += (x == Board::COLUMN_COUNT - 1 - y ? point : 0);
+      diagonal += [&] {
+        if(x == y) {
+          return point;
+        } else {
+          return 0;
+        }
+      }();
+      reverse_diagonal += [&] {
+        if(x == Board::COLUMN_COUNT - 1 - y) {
+          return point;
+        } else {
+          return 0;
+        }
+      }();
     }
   }
   for(auto x = 0; x < Board::ROW_COUNT; ++x) {

@@ -52,7 +52,7 @@ namespace TicTacToe {
     private:
 
       /** Array of the board. */
-      std::array<std::array<Token, COLUMN_COUNT>, ROW_COUNT> board_{{}};
+      std::array<std::array<Token, COLUMN_COUNT>, ROW_COUNT> m_board;
   };
 
   /**
