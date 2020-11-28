@@ -3,11 +3,9 @@
 using namespace TicTacToe;
 
 GameModel::GameModel() : 
-  m_board{},
-  m_state{State::INVALID},
+  m_state{State::CONTINUE},
   m_turn{Board::Token::X},
-  m_moves{0} {
-}
+  m_moves{0} {}
 
 const Board& GameModel::get_board() const {
   return m_board;
@@ -30,13 +28,10 @@ GameModel::State GameModel::play_move(int x, int y) {
       evaluate_winner(m_board) != Board::Token::NONE ||
       m_moves == Board::ROW_COUNT * Board::COLUMN_COUNT) {
     m_state = State::END;
+  } else if(m_turn == Board::Token::X) {
+    m_turn = Board::Token::O;
   } else {
-    m_state = State::CONTINUE;
-    if(m_turn == Board::Token::X) {
-      m_turn = Board::Token::O;
-    } else if(m_turn == Board::Token::O) {
-      m_turn = Board::Token::X;
-    }
+    m_turn = Board::Token::X;
   }
   return m_state;
 }

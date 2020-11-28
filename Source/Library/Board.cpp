@@ -2,6 +2,12 @@
 
 using namespace TicTacToe;
 
+Board::Board() {
+  for(auto& row : m_board) {
+    row.fill(Token::NONE);
+  }
+}
+
 Board::Token Board::get_piece(int x, int y) const {
   if(x < 0 || y < 0 || x >= ROW_COUNT || y >= COLUMN_COUNT) {
     throw std::out_of_range(
