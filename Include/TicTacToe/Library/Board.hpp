@@ -30,6 +30,11 @@ namespace TicTacToe {
       };
 
       /**
+       * Constructs a empty Board where all pieces are Toke::NONE.
+       */
+      Board();
+
+      /**
        * Returns the piece at a given position.
        * @param x The x coordinate of the board position.
        * @param y The y coordinate of the board position.

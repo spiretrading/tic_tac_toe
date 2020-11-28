@@ -50,6 +50,12 @@ namespace TicTacToe {
        *         board's range.
        */
       State play_move(int x, int y);
+
+    private:
+      Board m_board;
+      State m_state;
+      Board::Token m_turn;
+      int m_moves;
   };
 }
 
