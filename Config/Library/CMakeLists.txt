@@ -1,7 +1,19 @@
-file(GLOB header_files ../../Include/TicTacToe/Library/*.hpp)
-file(GLOB source_files ../../Source/Library/*.cpp)
-source_group("Header Files" FILES ${header_files})
-source_group("Source Files" FILES ${source_files})
+file(GLOB game_board_window_header_files
+  ../../Include/TicTacToe/Library/GameBoardWindow/*.hpp)
+file(GLOB game_board_window_source_files
+  ../../Source/Library/GameBoardWindow/*.cpp)
+source_group("GameBoardWindow\\Header Files"
+  FILES ${game_board_window_header_files})
+source_group("GameBoardWindow\\Source Files"
+  FILES ${game_board_window_source_files})
+file(GLOB common_header_files ../../Include/TicTacToe/Library/*.hpp)
+file(GLOB common_source_files ../../Source/Library/*.cpp)
+source_group("TicTacToe\\Header Files" FILES ${common_header_files})
+source_group("TicTacToe\\Source Files" FILES ${common_source_files})
+file(GLOB header_files ${game_board_window_header_files}
+  ${common_header_files})
+file(GLOB source_files ${game_board_window_source_files}
+  ${common_source_files})
 if(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
 endif()

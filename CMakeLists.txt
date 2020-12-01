@@ -82,6 +82,7 @@ macro(find_cpp_qobject output)
 endmacro()
 
 add_subdirectory(Config/Library)
+add_subdirectory(Config/GameBoardWindowTester)
 add_subdirectory(Config/GameTester)
 add_subdirectory(Config/Resources)
 add_subdirectory(Config/TicTacToe)
