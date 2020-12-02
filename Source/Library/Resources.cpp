@@ -33,7 +33,17 @@ void local_resources() {
     ":/Fonts/Roboto/Roboto-MediumItalic.ttf" <<
     ":/Fonts/Roboto/Roboto-Regular.ttf" <<
     ":/Fonts/Roboto/Roboto-Thin.ttf" <<
-    ":/Fonts/Roboto/Roboto-ThinItalic.ttf";
+    ":/Fonts/Roboto/Roboto-ThinItalic.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-Bold.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-BoldItalic.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-ExtraBold.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-Italic.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-Light.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-LightItalic.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-Regular.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-SemiBold.ttf" <<
+    ":/Fonts/OpenSans/OpenSans-SemiBoldItalic.ttf";
   for(auto& font : fonts) {
     QFontDatabase::addApplicationFont(font);
   }
