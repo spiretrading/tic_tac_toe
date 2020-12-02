@@ -8,15 +8,14 @@ using namespace TicTacToe;
 
 TitleWindow::TitleWindow(QWidget* parent)
   : QWidget(parent) {
-  QFont font;
-  font.setFamily(QString::fromUtf8("Open Sans"));
+  auto font = QFont("Open Sans");
   setFixedSize(780, 514);
-  setStyleSheet(QString::fromUtf8("background-color: #FFFFFF;"));
+  setStyleSheet("background-color: #FFFFFF;");
   auto title_label = new QLabel(this);
   title_label->setText(QObject::tr("TIC TAC TOE"));
   title_label->setGeometry(QRect(0, 100, 780, 61));
   title_label->setAlignment(Qt::AlignCenter);
-  title_label->setStyleSheet(QString::fromUtf8("color: #4B23A0;"));
+  title_label->setStyleSheet("color: #4B23A0;");
   font.setPixelSize(45);
   font.setWeight(QFont::Bold);
   font.setLetterSpacing(QFont::AbsoluteSpacing, 0);
@@ -25,7 +24,7 @@ TitleWindow::TitleWindow(QWidget* parent)
   description_label->setText(QObject::tr("A STRESS FREE GAME FOR TWO PLAYERS"));
   description_label->setGeometry(QRect(0, 181, 780, 19));
   description_label->setAlignment(Qt::AlignCenter);
-  description_label->setStyleSheet(QString::fromUtf8("color: #333333;"));
+  description_label->setStyleSheet("color: #333333;");
   font.setPixelSize(14);
   font.setWeight(QFont::Normal);
   font.setLetterSpacing(QFont::AbsoluteSpacing, 1.6);
@@ -34,7 +33,7 @@ TitleWindow::TitleWindow(QWidget* parent)
   footer_label->setText(QObject::tr("Designed and developed by Spire."));
   footer_label->setGeometry(QRect(0, 414, 780, 17));
   footer_label->setAlignment(Qt::AlignCenter);
-  footer_label->setStyleSheet(QString::fromUtf8("color: #8C8C8C;"));
+  footer_label->setStyleSheet("color: #8C8C8C;");
   font.setPixelSize(12);
   font.setWeight(QFont::Normal);
   font.setLetterSpacing(QFont::AbsoluteSpacing, 0);
@@ -46,14 +45,16 @@ TitleWindow::TitleWindow(QWidget* parent)
   font.setWeight(QFont::Light);
   font.setLetterSpacing(QFont::AbsoluteSpacing, 4.8);
   play_now_button->setFont(font);
-  play_now_button->setStyleSheet(QString::fromUtf8(
-    "QPushButton {"
-    "background-color: #4B23A0;"
-    "border-radius: 3px;"
-    "color: #FFFFFF;"
-    "padding: 0px;}"
-    "QPushButton:hover:!pressed {"
-    "background-color: #684BC7;}"));
+  play_now_button->setStyleSheet(R"(
+    QPushButton {
+      background-color: #4B23A0;
+      border-radius: 3px;
+      color: #FFFFFF;
+      padding: 0px;
+    }
+    QPushButton:hover:!pressed {
+      background-color: #684BC7;
+    })");
   QObject::connect(play_now_button, &QPushButton::clicked, 
     this, [&]() { this->m_play_now_signal(); });
 }
