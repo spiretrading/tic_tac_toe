@@ -10,6 +10,9 @@ namespace TicTacToe {
   class BadgePanel : public QWidget {
     public:
 
+      /** The max number of badges. */
+      static constexpr auto MAX_SCORE = 9;
+
       /**
        * Constructs a BadgePanel.
        * @param side Whether the panel displays badges for player X or O.
@@ -24,6 +27,10 @@ namespace TicTacToe {
 
       /** Sets the number of unlocked badges. */
       void set_score(int score);
+
+    private:
+      int m_score;
+      QGridLayout* m_badges_layout;
   };
 }
 

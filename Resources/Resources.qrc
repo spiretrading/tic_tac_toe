@@ -28,5 +28,8 @@
         <file>Fonts/OpenSans/OpenSans-Regular.ttf</file>
         <file>Fonts/OpenSans/OpenSans-SemiBold.ttf</file>
         <file>Fonts/OpenSans/OpenSans-SemiBoldItalic.ttf</file>
+        <file>Icons/badge.png</file>
+        <file>Icons/o.png</file>
+        <file>Icons/x.png</file>
     </qresource>
 </RCC>
