@@ -6,8 +6,8 @@
 using namespace TicTacToe;
 
 BadgePanel::BadgePanel(Board::Token side, int score, QWidget* parent) :
-  m_score(score),
-  QWidget(parent) {
+  QWidget(parent),
+  m_score(score) {
   setFixedWidth(120);
   setStyleSheet("background-color: #FFFFFF;");
   auto panel_layout = new QVBoxLayout();
