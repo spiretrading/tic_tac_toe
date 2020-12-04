@@ -5,18 +5,12 @@
 
 using namespace TicTacToe;
 
-BadgePanel::BadgePanel(Board::Token side, int score, QWidget* parent)
-  : QWidget(parent) {
-  if(score < 0) {
-    m_score = 0;
-  } else if(score > MAX_SCORE) {
-    m_score = MAX_SCORE;
-  } else {
-    m_score = score;
-  }
+BadgePanel::BadgePanel(Board::Token side, int score, QWidget* parent) :
+  m_score(score),
+  QWidget(parent) {
   setFixedWidth(120);
   setStyleSheet("background-color: #FFFFFF;");
-  auto panel_layout = new QVBoxLayout;
+  auto panel_layout = new QVBoxLayout();
   panel_layout->setContentsMargins(0, 0, 0, 0);
   panel_layout->setSpacing(0);
   auto string_side = QString();
@@ -36,7 +30,7 @@ BadgePanel::BadgePanel(Board::Token side, int score, QWidget* parent)
     font-size: 20px;)");
   panel_layout->addWidget(player_label);
   panel_layout->addSpacing(15);
-  m_badges_layout = new QGridLayout;
+  m_badges_layout = new QGridLayout();
   m_badges_layout->setContentsMargins(0, 0, 0, 0);
   m_badges_layout->setSpacing(15);
   for(auto i = 0; i < m_score; ++i) {
@@ -59,13 +53,7 @@ int BadgePanel::get_score() const {
 }
 
 void BadgePanel::set_score(int score) {
-  if(score < 0) {
-    m_score = 0;
-  } else if(score > MAX_SCORE) {
-    m_score = MAX_SCORE;
-  } else {
-    m_score = score;
-  }
+  m_score = score;
   for(auto i = 0; i < m_score; ++i) {
     static_cast<BadgeBox*>(m_badges_layout->itemAt(i)->widget())->set_state(
       BadgeBox::State::UNLOCKED);
