@@ -8,13 +8,19 @@ namespace TicTacToe {
   class BadgeBox : public QWidget {
     public:
 
+      /** The opacity of the locked badge. */
+      static constexpr auto LOCKED_OPACITY = 0.25;
+
+      /** The opacity of the unlocked badge. */
+      static constexpr auto UNLOCKED_OPACITY = 1.0;
+
       /** The states of the box. */
       enum class State {
 
-        /** The badge is locked. */
+        /** The badge is unlocked. */
         UNLOCKED,
 
-        /** The badge is unlocked. */
+        /** The badge is locked. */
         LOCKED
       };
 
@@ -30,6 +36,9 @@ namespace TicTacToe {
 
       /** Sets the state of the box. */
       void set_state(State state);
+
+    private:
+      State m_state;
   };
 }
 
