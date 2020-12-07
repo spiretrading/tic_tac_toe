@@ -30,6 +30,10 @@ namespace TicTacToe {
       /** Connects a slot to the ClickedSignal. */
       boost::signals2::connection connect_clicked_signal(
         const ClickedSignal::slot_type& slot) const;
+
+    private:
+      mutable ClickedSignal m_clickedSignal;
+      const Board* m_board;
   };
 }
 

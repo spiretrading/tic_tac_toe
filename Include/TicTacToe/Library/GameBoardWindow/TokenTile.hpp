@@ -38,6 +38,7 @@ namespace TicTacToe {
 
     private:
       mutable ClickedSignal m_clickedSignal;
+      Board::Token m_token;
   };
 }
 
