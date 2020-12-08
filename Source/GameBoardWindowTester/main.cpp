@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
   initialize_resources();
   auto board = Board();
   auto game_board = new GameBoardPanel(board);
-  game_board->connect_clicked_signal([&](int x, int y) {
+  game_board->connect_clicked_signal([&] (int x, int y) {
     auto token = board.get_piece(x, y);
     auto next_token = (static_cast<int>(token) + 1) % 3;
     board.set_piece(x, y, static_cast<Board::Token>(next_token));

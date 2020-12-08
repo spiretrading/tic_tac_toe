@@ -6,12 +6,11 @@ using namespace boost::signals2;
 using namespace TicTacToe;
 
 TokenTile::TokenTile(QWidget* parent)
-  : TokenTile(Board::Token::NONE, parent) {
-}
+    : TokenTile(Board::Token::NONE, parent) {}
 
 TokenTile::TokenTile(Board::Token token, QWidget* parent)
-  : QWidget(parent)
-  , m_token(token) {
+    : QWidget(parent),
+      m_token(token) {
   setFixedSize(100, 100);
   auto button = new QPushButton(this);
   button->setGeometry(0, 0, width(), height());
@@ -67,6 +66,6 @@ void TokenTile::set_token(Board::Token token) {
 }
 
 connection TokenTile::connect_clicked_signal(
-  const ClickedSignal::slot_type& slot) const {
+    const ClickedSignal::slot_type& slot) const {
   return m_clickedSignal.connect(slot);
 }
