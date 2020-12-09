@@ -1,9 +1,9 @@
 #ifndef TIC_TAC_TOE_GAME_BOARD_WINDOW_HPP
 #define TIC_TAC_TOE_GAME_BOARD_WINDOW_HPP
 #include <QWidget>
+#include "TicTacToe/Library/Board.hpp"
 #include "TicTacToe/Library/GameBoardWindow/BadgePanel.hpp"
 #include "TicTacToe/Library/GameBoardWindow/GameBoardPanel.hpp"
-#include "TicTacToe/Library/Board.hpp"
 
 namespace TicTacToe {
 
@@ -43,6 +43,12 @@ namespace TicTacToe {
 
       /** Sets which player's turn it is. */
       void set_turn(Board::Token turn);
+
+    private:
+      GameBoardPanel* m_game_panel;
+      BadgePanel* m_x_badge_panel;
+      BadgePanel* m_o_badge_panel;
+      Board::Token m_turn;
   };
 }
 

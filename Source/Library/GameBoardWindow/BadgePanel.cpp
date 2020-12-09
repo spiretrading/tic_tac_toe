@@ -1,4 +1,3 @@
-#include <QGridLayout>
 #include <QLabel>
 #include <QVBoxLayout>
 #include "TicTacToe/Library/GameBoardWindow/BadgePanel.hpp"
