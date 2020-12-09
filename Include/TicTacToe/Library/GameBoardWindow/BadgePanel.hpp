@@ -1,5 +1,6 @@
 #ifndef TIC_TAC_TOE_BADGE_PANEL_HPP
 #define TIC_TAC_TOE_BADGE_PANEL_HPP
+#include <QGridLayout>
 #include <QWidget>
 #include "TicTacToe/Library/Board.hpp"
 #include "TicTacToe/Library/GameBoardWindow/BadgeBox.hpp"
