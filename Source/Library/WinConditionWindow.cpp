@@ -33,10 +33,8 @@ WinConditionWindow::WinConditionWindow(Board::Token winner, QWidget* parent)
   winner_label->setText(QObject::tr("PLAYER %1 WON").arg([winner] {
     if(winner == Board::Token::X) {
       return "X";
-    } else if(winner == Board::Token::O) {
-      return "O";
     } else {
-      return "";
+      return "O";
     }
   }()));
   winner_label->setStyleSheet(R"(
