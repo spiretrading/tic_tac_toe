@@ -4,10 +4,15 @@ using namespace boost::signals2;
 using namespace TicTacToe;
 
 GameBoardController::GameBoardController(int x_badge_count, int o_badge_count)
-    : m_game_board_window(m_game_model.get_board(), Board::Token::X),
-      m_game_state(GameModel::State::CONTINUE) {
-  m_game_board_window.get_x_badge_panel().set_score(x_badge_count);
-  m_game_board_window.get_o_badge_panel().set_score(o_badge_count);
+    : m_x_badge_count(x_badge_count),
+      m_o_badge_count(o_badge_count),
+      m_game_state(GameModel::State::CONTINUE),
+      m_game_board_window(m_game_model.get_board(), Board::Token::X) {
+}
+
+void GameBoardController::create_game_board() {
+  m_game_board_window.get_x_badge_panel().set_score(m_x_badge_count);
+  m_game_board_window.get_o_badge_panel().set_score(m_o_badge_count);
   m_game_board_window.get_panel().connect_clicked_signal([this] (int x, int y) {
     if(m_game_state == GameModel::State::END) {
       return;
@@ -23,6 +28,9 @@ GameBoardController::GameBoardController(int x_badge_count, int o_badge_count)
       m_game_over_signal(evaluate_winner(m_game_model.get_board()));
     }
   });
+}
+
+void GameBoardController::show_game_board() {
   m_game_board_window.show();
   m_game_board_window.activateWindow();
 }

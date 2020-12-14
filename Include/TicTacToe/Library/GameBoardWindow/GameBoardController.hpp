@@ -19,7 +19,13 @@ namespace TicTacToe {
        * @param x_badge_count The number of badges of player X.
        * @param o_badge_count The number of badges of player O.
        */
-      explicit GameBoardController(int x_badge_count, int o_badge_count);
+      GameBoardController(int x_badge_count, int o_badge_count);
+
+      /** Creates and inits the game board. */
+      void create_game_board();
+
+      /** Shows the game board window. */
+      void show_game_board();
 
       /** Connects a slot to the GameOverSignal. */
       boost::signals2::connection connect_game_over_signal(
@@ -27,9 +33,11 @@ namespace TicTacToe {
 
     private:
       mutable GameOverSignal m_game_over_signal;
+      int m_x_badge_count;
+      int m_o_badge_count;
+      GameModel::State m_game_state;
       GameModel m_game_model;
       GameBoardWindow m_game_board_window;
-      GameModel::State m_game_state;
   };
 }
 

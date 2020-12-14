@@ -16,7 +16,9 @@ int main(int argc, char** argv) {
   auto timer = QTimer();
   auto controller = std::make_unique<GameBoardController>(x_badge_count,
     o_badge_count);
-  std::function<void()> connect = [&] {
+  controller->create_game_board();
+  controller->show_game_board();
+  std::function<void ()> connect = [&] {
     controller->connect_game_over_signal([&] (Board::Token winner) {
       if(winner == Board::Token::X) {
         ++x_badge_count;
@@ -32,7 +34,10 @@ int main(int argc, char** argv) {
         }
       }
       QTimer::singleShot(1000, [&] {
-        controller.reset(new GameBoardController(x_badge_count, o_badge_count));
+        controller = std::make_unique<GameBoardController>(x_badge_count,
+          o_badge_count);
+        controller->create_game_board();
+        controller->show_game_board();
         connect();
       });
     });
