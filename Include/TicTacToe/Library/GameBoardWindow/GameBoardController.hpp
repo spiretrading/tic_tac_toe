@@ -26,16 +26,12 @@ namespace TicTacToe {
         const GameOverSignal::slot_type& slot) const;
 
     private:
-      void init_game_board();
-      void show_game_board();
-      void on_game_board_clicked(int x, int y);
-
       mutable GameOverSignal m_game_over_signal;
-      int m_x_badge_count;
-      int m_o_badge_count;
       GameModel::State m_game_state;
       GameModel m_game_model;
       GameBoardWindow m_game_board_window;
+
+      void on_game_board_clicked(int x, int y);
   };
 }
 
