@@ -1,29 +1,50 @@
 #include "TicTacToe/Library/ApplicationController.hpp"
+#include "TicTacToe/Library/DrawConditionWindow.hpp"
+#include "TicTacToe/Library/TitleWindow.hpp"
+#include "TicTacToe/Library/WinConditionWindow.hpp"
 
 using namespace TicTacToe;
 
 ApplicationController::ApplicationController()
   : m_x_badge_count(0),
-    m_o_badge_count(0) {
+    m_o_badge_count(0),
+    m_application_window() {
+  m_application_window.setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
+  auto layout = new QVBoxLayout(&m_application_window);
+  layout->setContentsMargins(0, 0, 0, 0);
+  layout->setSpacing(0);
+  m_application_window.setLayout(layout);
+  m_application_window.show();
   show_title_window();
+}
+
+ApplicationController::~ApplicationController() {
+  auto child = m_application_window.layout()->itemAt(0)->widget();
+  if(child == &m_game_board_controller->get_game_board_window()) {
+    m_application_window.layout()->removeWidget(child);
+    child->setParent(nullptr);
+  }
 }
 
 void ApplicationController::show_title_window() {
   m_x_badge_count = 0;
   m_o_badge_count = 0;
-  m_title_window = std::make_unique<TitleWindow>();
+  auto m_title_window = new TitleWindow(&m_application_window);
+  m_application_window.layout()->addWidget(m_title_window);
   m_title_window->connect_play_now_signal([this] {
-    m_title_window.reset();
+    m_application_window.layout()->takeAt(0)->widget()->deleteLater();
     play();
   });
-  m_title_window->show();
 }
 
 void ApplicationController::play() {
   m_game_board_controller = std::make_unique<GameBoardController>(
     m_x_badge_count, m_o_badge_count);
+  m_application_window.layout()->addWidget(
+    &m_game_board_controller->get_game_board_window());
   m_game_board_controller->connect_game_over_signal(
     [this] (Board::Token winner) {
+      m_application_window.layout()->takeAt(0);
       m_game_board_controller.reset();
       game_over(winner);
     });
@@ -51,27 +72,27 @@ void ApplicationController::game_win(Board::Token winner) {
       m_o_badge_count = 1;
     }
   }
-  m_win_window = std::make_unique<WinConditionWindow>(winner);
+  auto m_win_window = new WinConditionWindow(winner, &m_application_window);
+  m_application_window.layout()->addWidget(m_win_window);
   m_win_window->connect_start_signal([this] {
-    m_win_window.reset();
+    m_application_window.layout()->takeAt(0)->widget()->deleteLater();
     play();
   });
   m_win_window->connect_back_signal([this] {
-    m_win_window.reset();
+    m_application_window.layout()->takeAt(0)->widget()->deleteLater();
     show_title_window();
   });
-  m_win_window->show();
 }
 
 void ApplicationController::game_draw() {
-  m_draw_window = std::make_unique<DrawConditionWindow>();
+  auto m_draw_window = new DrawConditionWindow(&m_application_window);
+  m_application_window.layout()->addWidget(m_draw_window);
   m_draw_window->connect_start_signal([this] {
-    m_draw_window.reset();
+    m_application_window.layout()->takeAt(0)->widget()->deleteLater();
     play();
   });
   m_draw_window->connect_back_signal([this] {
-    m_draw_window.reset();
+    m_application_window.layout()->takeAt(0)->widget()->deleteLater();
     show_title_window();
   });
-  m_draw_window->show();
 }

@@ -21,6 +21,9 @@ namespace TicTacToe {
        */
       GameBoardController(int x_badge_count, int o_badge_count);
 
+      /** Returns the game board window. */
+      GameBoardWindow& get_game_board_window();
+
       /** Connects a slot to the GameOverSignal. */
       boost::signals2::connection connect_game_over_signal(
         const GameOverSignal::slot_type& slot) const;
