@@ -85,6 +85,10 @@ WinConditionWindow::WinConditionWindow(Board::Token winner, QWidget* parent)
   layout->addWidget(back_button, 0, Qt::AlignCenter);
   layout->addSpacing(65);
   setLayout(layout);
+  connect(start_button, &QPushButton::clicked,
+    this, [this] { m_start_signal(); });
+  connect(back_button, &QPushButton::clicked,
+    this, [this] { m_back_signal(); });
 }
 
 Board::Token WinConditionWindow::get_winner() const {

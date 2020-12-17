@@ -11,8 +11,10 @@ GameBoardController::GameBoardController(int x_badge_count, int o_badge_count)
   m_game_board_window.get_panel().connect_clicked_signal([this] (int x, int y) {
     on_game_board_clicked(x, y);
   });
-  m_game_board_window.show();
-  m_game_board_window.activateWindow();
+}
+
+GameBoardWindow& GameBoardController::get_game_board_window() {
+  return m_game_board_window;
 }
 
 connection GameBoardController::connect_game_over_signal(
