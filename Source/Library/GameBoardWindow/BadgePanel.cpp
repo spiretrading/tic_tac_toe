@@ -1,13 +1,14 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include "TicTacToe/Library/GameBoardWindow/BadgePanel.hpp"
+#include "TicTacToe/Library/Scaling.hpp"
 
 using namespace TicTacToe;
 
 BadgePanel::BadgePanel(Board::Token side, int score, QWidget* parent) :
   QWidget(parent),
   m_score(score) {
-  setFixedWidth(120);
+  setFixedWidth(scale_width(120));
   setStyleSheet("background-color: #FFFFFF;");
   auto panel_layout = new QVBoxLayout();
   panel_layout->setContentsMargins(0, 0, 0, 0);
@@ -19,27 +20,28 @@ BadgePanel::BadgePanel(Board::Token side, int score, QWidget* parent) :
     string_side = "O";
   }
   auto player_label = new QLabel(QObject::tr("PLAYER ") + string_side);
-  player_label->setFixedHeight(34);
+  player_label->setFixedHeight(scale_height(34));
   player_label->setAlignment(Qt::AlignCenter);
-  player_label->setStyleSheet(R"(
+  player_label->setStyleSheet(QString(R"(
     background-color: #F5B43C;
-    border-radius: 3px;
+    border-radius: %1px;
     color: #FFFFFF;
     font-family: Open Sans;
-    font-size: 20px;)");
+    font-size: %2px;)").arg(scale_width(3)).arg(scale_width(20)));
   panel_layout->addWidget(player_label);
-  panel_layout->addSpacing(15);
+  panel_layout->addSpacing(scale_height(15));
   m_badges_layout = new QGridLayout();
   m_badges_layout->setContentsMargins(0, 0, 0, 0);
-  m_badges_layout->setSpacing(15);
+  m_badges_layout->setHorizontalSpacing(scale_width(15));
+  m_badges_layout->setVerticalSpacing(scale_height(15));
   for(auto i = 0; i < m_score; ++i) {
     auto badge = new BadgeBox(BadgeBox::State::UNLOCKED);
-    badge->setFixedSize(30, 30);
+    badge->setFixedSize(scale(30, 30));
     m_badges_layout->addWidget(badge, i / 3, i % 3);
   }
   for(auto i = m_score; i < MAX_SCORE; ++i) {
     auto badge = new BadgeBox(BadgeBox::State::LOCKED);
-    badge->setFixedSize(30, 30);
+    badge->setFixedSize(scale(30, 30));
     m_badges_layout->addWidget(badge, i / 3, i % 3);
   }
   panel_layout->addLayout(m_badges_layout);
